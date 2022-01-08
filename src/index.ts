@@ -2,8 +2,8 @@ export class NFTLargeStorage {
   constructor(private ipfsClient: any) {
 
   }
-  add(data: string): Promise<any> {
-    console.log(this.ipfsClient)
+  add =async (data: string) =>{
     // return this.ipfsClient.add(data); 
+    return Promise.resolve({hash: "QmXg9Pp2ytZ14xgmQjYEiHjVjMFXzCVVEcRTWJBmLgR39V"})
   }
 }

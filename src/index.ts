@@ -3,6 +3,7 @@ export class NFTLargeStorage {
 
   }
   add(data: string): Promise<any> {
-    return this.ipfsClient.add(data); 
+    console.log(this.ipfsClient)
+    // return this.ipfsClient.add(data); 
   }
 }

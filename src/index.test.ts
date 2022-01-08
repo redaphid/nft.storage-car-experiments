@@ -1,5 +1,12 @@
 import { CID, create as createIpfsClient } from "ipfs";
 import { NFTLargeStorage } from "./index";
+
+const generateRandomData = (size: number) => {
+  const data = new Uint8Array(size);
+  crypto.getRandomValues(data);
+  return data;
+}
+
 describe("NFTLargeFileStorage", () => {
   it("should exist", () => {
     expect(NFTLargeStorage).toBeDefined();
@@ -12,7 +19,7 @@ describe("NFTLargeFileStorage", () => {
       nftLargeStorage = new NFTLargeStorage(ipfsClient);
     });
 
-    it("should be able to store a file, and retrieve it's dag", async () => {
+    it("should be able to store a file, and retrieve it's dag", async () => {      
       const file = await nftLargeStorage.add("Hello World");
       console.log({file})
       expect(file.cid.toString()).toEqual(

@@ -21,7 +21,9 @@ describe("NFTLargeFileStorage", () => {
 
       const cid =file.cid
       const dag = await ipfsClient.get(cid, {localResolve: true});
-      console.log({dag})
+      for await (const l of dag) {
+        console.log({l})
+      }
 
       expect(dag).toBeDefined();  
     });

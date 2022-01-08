@@ -1,5 +1,6 @@
-
-  test("Let's get things started", ()=>{
-    expect(true).toBe(false)
-  })
-
+import { NFTLargeStorage } from "./index";
+describe("NFTLargeFileStorage", () => {
+  it("should exist", () => {
+    expect(NFTLargeStorage).toBeDefined();
+  });
+});

@@ -37,7 +37,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@types/jest", "npm:27.4.0"],
             ["ipfs", "npm:0.61.0"],
+            ["it-all", "npm:1.0.6"],
             ["jest", "virtual:894bd21a1f211d5a1137c04c3a41147823906e89cd2b0cec6cbbda8926cb2120ae5289bc6c9f60f12e426e20f21fc357aba7be163252b5e95f01d24320ccfb5a#npm:27.4.7"],
+            ["libp2p", "npm:0.35.8"],
             ["ts-jest", "virtual:894bd21a1f211d5a1137c04c3a41147823906e89cd2b0cec6cbbda8926cb2120ae5289bc6c9f60f12e426e20f21fc357aba7be163252b5e95f01d24320ccfb5a#npm:27.1.2"],
             ["typescript", "patch:typescript@npm%3A4.5.4#~builtin<compat/typescript>::version=4.5.4&hash=493e53"]
           ],
@@ -8502,7 +8504,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["nft.storage-car-experiments", "workspace:."],
             ["@types/jest", "npm:27.4.0"],
             ["ipfs", "npm:0.61.0"],
+            ["it-all", "npm:1.0.6"],
             ["jest", "virtual:894bd21a1f211d5a1137c04c3a41147823906e89cd2b0cec6cbbda8926cb2120ae5289bc6c9f60f12e426e20f21fc357aba7be163252b5e95f01d24320ccfb5a#npm:27.4.7"],
+            ["libp2p", "npm:0.35.8"],
             ["ts-jest", "virtual:894bd21a1f211d5a1137c04c3a41147823906e89cd2b0cec6cbbda8926cb2120ae5289bc6c9f60f12e426e20f21fc357aba7be163252b5e95f01d24320ccfb5a#npm:27.1.2"],
             ["typescript", "patch:typescript@npm%3A4.5.4#~builtin<compat/typescript>::version=4.5.4&hash=493e53"]
           ],

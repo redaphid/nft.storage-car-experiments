@@ -6515,7 +6515,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"libp2p@npm:^0.35.4":
+"libp2p@npm:^0.35.4, libp2p@npm:^0.35.8":
   version: 0.35.8
   resolution: "libp2p@npm:0.35.8"
   dependencies:
@@ -7170,7 +7170,9 @@ __metadata:
   dependencies:
     "@types/jest": ^27.4.0
     ipfs: ^0.61.0
+    it-all: ^1.0.6
     jest: ^27.4.7
+    libp2p: ^0.35.8
     ts-jest: ^27.1.2
     typescript: ^4.5.4
   languageName: unknown

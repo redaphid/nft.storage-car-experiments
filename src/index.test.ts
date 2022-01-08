@@ -1,3 +1,4 @@
+import { create as createIpfsClient } from "ipfs";
 import { NFTLargeStorage } from "./index";
 describe("NFTLargeFileStorage", () => {
   it("should exist", () => {
@@ -7,20 +8,20 @@ describe("NFTLargeFileStorage", () => {
     let ipfsClient;
     let nftLargeStorage: NFTLargeStorage;
     beforeEach(() => {
-      ipfsClient = {
-        add: jest.fn(() =>
-          Promise.resolve({
-            hash: "QmXg9Pp2ytZ14xgmQjYEiHjVjMFXzCVVEcRTWJBmLgR39V",
-          })
-        ),
-        cat: jest.fn(() => Promise.resolve("Hello World")),
-      };
+      ipfsClient = createIpfsClient();
       nftLargeStorage = new NFTLargeStorage(ipfsClient);
     });
 
     it("should be able to store and retrieve a file", async () => {
       const file = await nftLargeStorage.add("Hello World");
-      expect(file.hash).toEqual("QmXg9Pp2ytZ14xgmQjYEiHjVjMFXzCVVEcRTWJBmLgR39V");
+      expect(file.hash).toEqual(
+        "QmXg9Pp2ytZ14xgmQjYEiHjVjMFXzCVVEcRTWJBmLgR39V"
+      );
+    });
+    it("should be able to store and retrieve the dag of a folder", async () => {
+      const { hash } = await nftLargeStorage.add("Hello World");
+      const dag = await ipfsClient.dag.get(hash);
+      expect(dag).toBeDefined();
     });
   });
 });

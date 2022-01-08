@@ -3,7 +3,7 @@ export class NFTLargeStorage {
 
   }
   add =async (data: string) =>{
-    // return this.ipfsClient.add(data); 
-    return Promise.resolve({hash: "QmXg9Pp2ytZ14xgmQjYEiHjVjMFXzCVVEcRTWJBmLgR39V"})
+    return this.ipfsClient.add(data); 
+    // return Promise.resolve({hash: "QmXg9Pp2ytZ14xgmQjYEiHjVjMFXzCVVEcRTWJBmLgR39V"})
   }
 }

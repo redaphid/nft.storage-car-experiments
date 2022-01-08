@@ -12,18 +12,18 @@ describe("NFTLargeFileStorage", () => {
       nftLargeStorage = new NFTLargeStorage(ipfsClient);
     });
 
-    it("should be able to store and retrieve a file", async () => {
+    it("should be able to store a file, and retrieve it's dag", async () => {
       const file = await nftLargeStorage.add("Hello World");
       console.log({file})
-      expect(file.hash).toEqual(
-        "QmXg9Pp2ytZ14xgmQjYEiHjVjMFXzCVVEcRTWJBmLgR39V"
+      expect(file.cid.toString()).toEqual(
+        "QmUXTtySmd7LD4p6RG6rZW6RuUuPZXTtNMmRQ6DSQo3aMw"
       );
-    });
-    it("should be able to store and retrieve the dag of a folder", async () => {
-      const { hash } = await nftLargeStorage.add("Hello World");
-      const cid = CID.parse(hash);
-      const dag = await ipfsClient.dag.get(cid);
-      expect(dag).toBeDefined();
+
+      const cid =file.cid
+      const dag = await ipfsClient.get(cid, {localResolve: true});
+      console.log({dag})
+
+      expect(dag).toBeDefined();  
     });
   });
 });

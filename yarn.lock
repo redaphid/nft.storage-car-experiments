@@ -1517,6 +1517,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/mocha@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "@types/mocha@npm:9.0.0"
+  checksum: 73e6edaba045bc250b69085a770d5029edfed006ed8e75344435474a2cb8d38064acd7b34b6cc62756caa845a5cf335bde66db11e8c8c6565c62a790e933704a
+  languageName: node
+  linkType: hard
+
 "@types/ms@npm:*":
   version: 0.7.31
   resolution: "@types/ms@npm:0.7.31"
@@ -1891,9 +1898,9 @@ __metadata:
   linkType: hard
 
 "async@npm:^3.2.0":
-  version: 3.2.2
-  resolution: "async@npm:3.2.2"
-  checksum: 90712c98df0c6d0ef0190f8bee9797bf6c7035a1317c9a036b80306a8d2246396b3ee356b4540ff349e29e625fafa25d4f04e11b6ac1c5f6b4c74c803e641137
+  version: 3.2.3
+  resolution: "async@npm:3.2.3"
+  checksum: c4bee57ab2249af3dc83ca3ef9acfa8e822c0d5e5aa41bae3eaf7f673648343cd64ecd7d26091ffd357f3f044428b17b5f00098494b6cf8b6b3e9681f0636ca1
   languageName: node
   linkType: hard
 
@@ -2321,9 +2328,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001286":
-  version: 1.0.30001297
-  resolution: "caniuse-lite@npm:1.0.30001297"
-  checksum: 4f0d298cf32c050aa1d8a7bb33ef6ff5f289e6dd6dad48b364bc2db91e03b5f0089ffa9950d6228dbd43446695cecd1990601b432a8d03c1d5b2e945cb67bade
+  version: 1.0.30001298
+  resolution: "caniuse-lite@npm:1.0.30001298"
+  checksum: 43566732d1b8746e3dfae57f558471c701b26b2c166fb9fc53ad750d83128b2eb680a5e08233717e64055779b408c72d3b2cfad6d4ae33a3e647a11dc1c0d515
   languageName: node
   linkType: hard
 
@@ -3090,9 +3097,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.17":
-  version: 1.4.38
-  resolution: "electron-to-chromium@npm:1.4.38"
-  checksum: 09e63e4f4457c97c9124379c3254dcc55d281004eeefe30d386814872c88817900e2c537c045e2cdd2bc209ad7cd8e4651f8c9e0ec7beefb0f848011620ab089
+  version: 1.4.39
+  resolution: "electron-to-chromium@npm:1.4.39"
+  checksum: 4d4b7c15c653a32f689961362bbc333a2c2e555683c53974217aa37904decd3d177787cb699486b9b0a35e14291275aae355e5407ff13cce855b283e2175d93d
   languageName: node
   linkType: hard
 
@@ -7169,6 +7176,7 @@ __metadata:
   resolution: "nft.storage-car-experiments@workspace:."
   dependencies:
     "@types/jest": ^27.4.0
+    "@types/mocha": ^9.0.0
     ipfs: ^0.61.0
     it-all: ^1.0.6
     jest: ^27.4.7
@@ -9589,13 +9597,13 @@ __metadata:
   linkType: hard
 
 "v8-to-istanbul@npm:^8.1.0":
-  version: 8.1.0
-  resolution: "v8-to-istanbul@npm:8.1.0"
+  version: 8.1.1
+  resolution: "v8-to-istanbul@npm:8.1.1"
   dependencies:
     "@types/istanbul-lib-coverage": ^2.0.1
     convert-source-map: ^1.6.0
     source-map: ^0.7.3
-  checksum: c7dabf9567e0c210b24d0720e553803cbe1ff81edb1ec7f2080eb4be01ed081a40286cc9f4aaa86d1bf8d57840cefae8fdf326b7cb8faa316ba50c7b948030d4
+  checksum: 54ce92bec2727879626f623d02c8d193f0c7e919941fa373ec135189a8382265117f5316ea317a1e12a5f9c13d84d8449052a731fe3306fa4beaafbfa4cab229
   languageName: node
   linkType: hard
 

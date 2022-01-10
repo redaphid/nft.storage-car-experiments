@@ -36,6 +36,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["@types/jest", "npm:27.4.0"],
+            ["@types/mocha", "npm:9.0.0"],
             ["ipfs", "npm:0.61.0"],
             ["it-all", "npm:1.0.6"],
             ["jest", "virtual:894bd21a1f211d5a1137c04c3a41147823906e89cd2b0cec6cbbda8926cb2120ae5289bc6c9f60f12e426e20f21fc357aba7be163252b5e95f01d24320ccfb5a#npm:27.4.7"],
@@ -1421,7 +1422,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["source-map", "npm:0.6.1"],
             ["string-length", "npm:4.0.2"],
             ["terminal-link", "npm:2.1.1"],
-            ["v8-to-istanbul", "npm:8.1.0"]
+            ["v8-to-istanbul", "npm:8.1.1"]
           ],
           "packagePeers": [
             "@types/node-notifier",
@@ -2073,6 +2074,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@types/mocha", [
+        ["npm:9.0.0", {
+          "packageLocation": "./.yarn/cache/@types-mocha-npm-9.0.0-cd77a42cf3-73e6edaba0.zip/node_modules/@types/mocha/",
+          "packageDependencies": [
+            ["@types/mocha", "npm:9.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@types/ms", [
         ["npm:0.7.31", {
           "packageLocation": "./.yarn/cache/@types-ms-npm-0.7.31-ea3b89342b-daadd354ae.zip/node_modules/@types/ms/",
@@ -2494,10 +2504,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:3.2.2", {
-          "packageLocation": "./.yarn/cache/async-npm-3.2.2-0245d236b6-90712c98df.zip/node_modules/async/",
+        ["npm:3.2.3", {
+          "packageLocation": "./.yarn/cache/async-npm-3.2.3-e9d6b79c88-c4bee57ab2.zip/node_modules/async/",
           "packageDependencies": [
-            ["async", "npm:3.2.2"]
+            ["async", "npm:3.2.3"]
           ],
           "linkType": "HARD",
         }]
@@ -2856,8 +2866,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/browserslist-npm-4.19.1-e9de2a4009-c0777fd483.zip/node_modules/browserslist/",
           "packageDependencies": [
             ["browserslist", "npm:4.19.1"],
-            ["caniuse-lite", "npm:1.0.30001297"],
-            ["electron-to-chromium", "npm:1.4.38"],
+            ["caniuse-lite", "npm:1.0.30001298"],
+            ["electron-to-chromium", "npm:1.4.39"],
             ["escalade", "npm:3.1.1"],
             ["node-releases", "npm:2.0.1"],
             ["picocolors", "npm:1.0.0"]
@@ -3037,10 +3047,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["caniuse-lite", [
-        ["npm:1.0.30001297", {
-          "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001297-f320b13c52-4f0d298cf3.zip/node_modules/caniuse-lite/",
+        ["npm:1.0.30001298", {
+          "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001298-f7f894bcff-43566732d1.zip/node_modules/caniuse-lite/",
           "packageDependencies": [
-            ["caniuse-lite", "npm:1.0.30001297"]
+            ["caniuse-lite", "npm:1.0.30001298"]
           ],
           "linkType": "HARD",
         }]
@@ -3948,10 +3958,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["electron-to-chromium", [
-        ["npm:1.4.38", {
-          "packageLocation": "./.yarn/cache/electron-to-chromium-npm-1.4.38-fccaeb9031-09e63e4f44.zip/node_modules/electron-to-chromium/",
+        ["npm:1.4.39", {
+          "packageLocation": "./.yarn/cache/electron-to-chromium-npm-1.4.39-e8d3bd29c6-4d4b7c15c6.zip/node_modules/electron-to-chromium/",
           "packageDependencies": [
-            ["electron-to-chromium", "npm:1.4.38"]
+            ["electron-to-chromium", "npm:1.4.39"]
           ],
           "linkType": "HARD",
         }]
@@ -8365,7 +8375,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/nat-api-npm-0.3.1-0ae3abf1b3-ca5e732e89.zip/node_modules/nat-api/",
           "packageDependencies": [
             ["nat-api", "npm:0.3.1"],
-            ["async", "npm:3.2.2"],
+            ["async", "npm:3.2.3"],
             ["debug", "virtual:44ae921843a40f79e037a9ef63c8661a9d6b4f9abe0d89622479a6ef01fe400749c4dad34c41b6957f7078f0aac238136f2857444ade7cc5c7f096c4f4141f58#npm:4.3.3"],
             ["default-gateway", "npm:6.0.3"],
             ["request", "npm:2.88.2"],
@@ -8503,6 +8513,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["nft.storage-car-experiments", "workspace:."],
             ["@types/jest", "npm:27.4.0"],
+            ["@types/mocha", "npm:9.0.0"],
             ["ipfs", "npm:0.61.0"],
             ["it-all", "npm:1.0.6"],
             ["jest", "virtual:894bd21a1f211d5a1137c04c3a41147823906e89cd2b0cec6cbbda8926cb2120ae5289bc6c9f60f12e426e20f21fc357aba7be163252b5e95f01d24320ccfb5a#npm:27.4.7"],
@@ -11184,10 +11195,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["v8-to-istanbul", [
-        ["npm:8.1.0", {
-          "packageLocation": "./.yarn/cache/v8-to-istanbul-npm-8.1.0-a7e185ca12-c7dabf9567.zip/node_modules/v8-to-istanbul/",
+        ["npm:8.1.1", {
+          "packageLocation": "./.yarn/cache/v8-to-istanbul-npm-8.1.1-15c031b361-54ce92bec2.zip/node_modules/v8-to-istanbul/",
           "packageDependencies": [
-            ["v8-to-istanbul", "npm:8.1.0"],
+            ["v8-to-istanbul", "npm:8.1.1"],
             ["@types/istanbul-lib-coverage", "npm:2.0.4"],
             ["convert-source-map", "npm:1.8.0"],
             ["source-map", "npm:0.7.3"]

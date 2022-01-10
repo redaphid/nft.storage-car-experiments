@@ -5,7 +5,7 @@ const generateRandomData = (size: number) => {
   const data = new Uint8Array(size);
   crypto.getRandomValues(data);
   return data;
-}
+};
 
 describe("NFTLargeFileStorage", () => {
   it("should exist", () => {
@@ -16,23 +16,24 @@ describe("NFTLargeFileStorage", () => {
     let nftLargeStorage: NFTLargeStorage;
     beforeAll(async () => {
       ipfsClient = await createIpfsClient();
+      await ipfsClient.config.profile.apply("test")
       nftLargeStorage = new NFTLargeStorage(ipfsClient);
     });
 
-    it("should be able to store a file, and retrieve it's dag", async () => {      
+    it("should be able to store a file, and retrieve it's dag", async () => {
       const file = await nftLargeStorage.add("Hello World");
-      console.log({file})
+      console.log({ file });
       expect(file.cid.toString()).toEqual(
         "QmUXTtySmd7LD4p6RG6rZW6RuUuPZXTtNMmRQ6DSQo3aMw"
       );
 
-      const cid =file.cid
-      const dag = await ipfsClient.get(cid, {localResolve: true});
+      const cid = file.cid;
+      const dag = await ipfsClient.get(cid, { localResolve: true });
       for await (const l of dag) {
-        console.log({l})
+        console.log({ l });
       }
 
-      expect(dag).toBeDefined();  
+      expect(dag).toBeDefined();
     });
   });
 });

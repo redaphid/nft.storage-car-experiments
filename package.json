@@ -2,6 +2,9 @@
   "name": "nft.storage-car-experiments",
   "packageManager": "yarn@3.1.1",
   "private": true,
+  "engine": {
+    "node": ">=16.0.0"
+  },
   "workspaces": [
     "packages/*"
   ],

@@ -1,9 +1,8 @@
-import { CID, create as createIpfsClient } from "ipfs";
+import { create as createIpfsClient } from "ipfs";
 import { NFTLargeStorage } from "./index";
 import {tmpdir} from 'os';
-import {rmdirSync} from 'fs'
+import {mkdirSync,rmdirSync} from 'fs'
 import {randomBytes} from 'crypto';
-
 const randomString = (size: number) => {  
   return randomBytes(size).toString('hex');
   
@@ -19,14 +18,16 @@ describe("NFTLargeFileStorage", () => {
     let nftLargeStorage: NFTLargeStorage;    
     beforeAll(async () => {
       datadir = `${tmpdir()}/ipfs-nft-large-storage-test/${randomString(10).toString()}`;
+      mkdirSync(datadir, {recursive: true});
       console.log({datadir})
       ipfsClient = await createIpfsClient({"path":datadir});
-      const diff = await ipfsClient.config.profiles.apply("test")
-      nftLargeStorage = new NFTLargeStorage(ipfsClient);
-      console.log(JSON.stringify(diff, null, 2));
+      await ipfsClient.config.profiles.apply("test")
+
+      nftLargeStorage = new NFTLargeStorage(ipfsClient);      
     });
 
     it("should be able to store a file, and retrieve it's dag", async () => {
+
       const file = await nftLargeStorage.add("Hello World");
       console.log({ file });
       expect(file.cid.toString()).toEqual(
@@ -43,7 +44,7 @@ describe("NFTLargeFileStorage", () => {
     });
     afterAll(async () => {
       await ipfsClient.stop();
-      rmdirSync(datadir);
+      rmdirSync(datadir, {recursive: true});
     })
   });
 });

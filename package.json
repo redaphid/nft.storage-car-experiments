@@ -17,7 +17,7 @@
     "typescript": "^4.5.4"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest --timeout=9999"
   },
   "dependencies": {
     "ipfs": "^0.61.0",

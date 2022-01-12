@@ -1,7 +1,7 @@
 import { create as createIpfsClient } from "ipfs";
 import { NFTLargeStorage } from "./index";
 import {tmpdir} from 'os';
-import {mkdirSync,rmdirSync} from 'fs'
+import {mkdir,rmdir} from 'fs/promises'
 import {randomBytes} from 'crypto';
 const randomString = (size: number) => {  
   return randomBytes(size).toString('hex');
@@ -18,7 +18,7 @@ describe("NFTLargeFileStorage", () => {
     let nftLargeStorage: NFTLargeStorage;    
     beforeAll(async () => {
       datadir = `${tmpdir()}/ipfs-nft-large-storage-test/${randomString(10).toString()}`;
-      mkdirSync(datadir, {recursive: true});
+      await mkdir(datadir, {recursive: true});
       console.log({datadir})
       ipfsClient = await createIpfsClient({"path":datadir});
       await ipfsClient.config.profiles.apply("test")
@@ -44,7 +44,7 @@ describe("NFTLargeFileStorage", () => {
     });
     afterAll(async () => {
       await ipfsClient.stop();
-      rmdirSync(datadir, {recursive: true});
+      await rmdir(datadir, {recursive: true});
     })
   });
 });

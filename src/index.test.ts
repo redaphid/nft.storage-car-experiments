@@ -56,11 +56,8 @@ describe("NFTLargeFileStorage", () => {
       );
 
       const cid = file.cid;
-      const dag = await ipfsClient.get(cid, { localResolve: true });
-      for await (const l of dag) {
-        console.log(l.length);
-      }
-
+      const dag = await ipfsClient.object.get(cid, { localResolve: true })
+      console.log(JSON.stringify(dag, null, 2))
       expect(dag).toBeDefined();
     });
     afterAll(async () => {

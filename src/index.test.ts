@@ -1,8 +1,9 @@
 import { create as createIpfsClient } from "ipfs";
 import { NFTLargeStorage } from "./index";
 import {tmpdir} from 'os';
-import {mkdir,rmdir} from 'fs/promises'
+import {mkdir,rmdir, stat} from 'fs/promises'
 import {randomBytes} from 'crypto';
+
 import {promisify} from 'util'
 
 const timeout = promisify(setTimeout)
@@ -18,7 +19,16 @@ describe("NFTLargeFileStorage", () => {
   describe("Given an ipfs client", () => {    
     let ipfsClient;
     let nftLargeStorage: NFTLargeStorage;    
-    
+    beforeAll(async () => {
+      try {
+      await stat('./test/data/alpine-standard-3.15.0-x86_64.iso')
+      } catch (e) {
+        console.error("Alpine image not found. You're gonna want to get it from https://dl-cdn.alpinelinux.org/alpine/v3.15/releases/x86_64/alpine-standard-3.15.0-x86_64.iso")
+        console.error("and put it in test/data. github obviously won't let me commit it to the repo, so you'll have to do that manually.")                
+        throw e
+      }
+      // 
+    })
     beforeAll(async () => {
       datadir = `${tmpdir()}/ipfs-nft-large-storage-test/${randomString(10).toString()}`;
       await mkdir(datadir, {recursive: true});
@@ -30,11 +40,8 @@ describe("NFTLargeFileStorage", () => {
       await nftLargeStorage.start()
     });
 
-    it("should be able to store a file, and retrieve it's dag", async () => {
-      const filePath = process.env.FILE_TO_UPLOAD_PATH
-      if(!filePath) throw new Error("FILE_TO_UPLOAD_PATH env variable is not set")
-
-      const file = await nftLargeStorage.add(filePath);
+    it("should be able to store a file, and retrieve it's dag", async () => {      
+      const file = await nftLargeStorage.add('')
       console.log({ file });
       expect(file.cid.toString()).toEqual(
         "QmUXTtySmd7LD4p6RG6rZW6RuUuPZXTtNMmRQ6DSQo3aMw"

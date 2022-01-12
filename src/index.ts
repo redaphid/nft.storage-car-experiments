@@ -15,6 +15,7 @@ export class NFTLargeStorage {
       {
         chunker: "size-100000",
         progress: console.log,
+        wrapWithDirectory: true,
       }
     );
     console.log({ result });

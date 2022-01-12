@@ -52,13 +52,13 @@ describe("NFTLargeFileStorage", () => {
       const file = await nftLargeStorage.add(testFile);
       console.log({ file });
       expect(file.cid.toString()).toEqual(
-        "QmUXTtySmd7LD4p6RG6rZW6RuUuPZXTtNMmRQ6DSQo3aMw"
+        "QmeqG4GvhKPvXk52xhZBYnkAi9kPfQuxnx95YruLhmrayn"
       );
 
       const cid = file.cid;
       const dag = await ipfsClient.get(cid, { localResolve: true });
       for await (const l of dag) {
-        console.log({ l });
+        console.log(l.length);
       }
 
       expect(dag).toBeDefined();

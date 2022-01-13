@@ -1,6 +1,5 @@
 {
-  "name": "nft.storage-car-experiments",
-  "packageManager": "yarn@3.1.1",
+  "name": "nft.storage-car-experiments", 
   "private": true,
   "engine": {
     "node": ">=16.0.0"

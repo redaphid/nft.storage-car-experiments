@@ -1,3 +1,4 @@
+const MAX_DATA_SIZE = 100000;
 import { open as openFile } from "fs/promises";
 export class NFTLargeStorage {
   constructor(private ipfsClient: any) {}
@@ -15,20 +16,59 @@ export class NFTLargeStorage {
         content: stream,
       },
       {
-        chunker: "size-100000",
+        chunker: `size-${MAX_DATA_SIZE}`,
         // progress: console.log,
         wrapWithDirectory: true,
       }
     );
-    console.log({ result });
     return result;
-    // return Promise.resolve({hash: "QmXg9Pp2ytZ14xgmQjYEiHjVjMFXzCVVEcRTWJBmLgR39V"})
   };
 
   getCarsForFile = async (cid) => {
-    console.log({ cid });
+    /*
+    Dag looks like:
+    {
+      Data: <something>,
+      Links: [{
+        Hash: <CID>,
+        Name: <filename>,
+        Tsize: <size of link>
+      }]
+
+    }
+    */
+    // console.log({ cid });
     const dag = await this.ipfsClient.object.get(cid, { localResolve: true });
-    return dag;
+    if(dag.Links.length === 0) 
+    {
+      return [dag]
+    }    
+
+    if(dag.Links.length) printDag(dag);
+
+    const linkPromises = dag.Links.map(link => {
+      return this.getCarsForFile(link.Hash);         
+    });  
+
+    let results: any[] =  []
+    const linkResults = await Promise.all(linkPromises)
+    
+    linkResults.forEach(linkResult => {
+      results = [...results, ...linkResult];
+    })
+    
+    return results;
   }
 
 }
+function printDag(dag: any) {
+  const printableDag = {
+    links: dag.Links.map((link) => ({
+      cid: link.Hash.toString(), 
+      name: link.Name,
+      size: link.Tsize, 
+    })),
+  }
+  console.table(printableDag.links);
+}
+

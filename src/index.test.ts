@@ -72,6 +72,10 @@ describe("NFTLargeFileStorage", () => {
         it("should return something", () => {
           expect(chunksToUpload).toBeDefined();
         });
+        it("should return the correctish number of chunks", () => {
+          expect(chunksToUpload.length).toBeGreaterThan(1500);
+          expect(chunksToUpload.length).toBeLessThan(2000);
+        })
       })
     });
   });

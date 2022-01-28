@@ -64,30 +64,15 @@ describe("NFTLargeFileStorage", () => {
           "QmeqG4GvhKPvXk52xhZBYnkAi9kPfQuxnx95YruLhmrayn"
         );
       });
-      it("should be able to retreive the dag", async () => {
-        const cid = file.cid;
-        const dag = await ipfsClient.object.get(cid, { localResolve: true });
-        console.log(JSON.stringify(dag, null, 2));
-        console.log(dag.Links);
-        expect(dag).toBeDefined();
-      });
+      describe("When asking for the CAR files of the correct size for uploading to nft.storage", () => {
+        let chunksToUpload
+        beforeAll(async () => { 
+          chunksToUpload = await nftLargeStorage.getCarsForFile(file.cid);
+        })
+        it("should return something", () => {
+          expect(chunksToUpload).toBeDefined();
+        });
+      })
     });
   });
-
-  //   it("should be able to store a file, and retrieve its dag", async () => {
-
-  //     console.log({ file });
-
-  //     const cid = file.cid;
-  //     const dag = await ipfsClient.object.get(cid, { localResolve: true })
-  //     console.log(JSON.stringify(dag, null, 2))
-  //     console.log(dag.Links)
-  //     expect(dag).toBeDefined();
-  //   });
-  //   afterAll(async () => {
-  //     await ipfsClient.stop();
-  //     await timeout(1000);
-  //     await rmdir(datadir, { recursive: true });
-  //   });
-  // });
 });

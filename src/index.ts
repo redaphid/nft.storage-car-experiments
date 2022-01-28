@@ -25,4 +25,10 @@ export class NFTLargeStorage {
     // return Promise.resolve({hash: "QmXg9Pp2ytZ14xgmQjYEiHjVjMFXzCVVEcRTWJBmLgR39V"})
   };
 
+  getCarsForFile = async (cid) => {
+    console.log({ cid });
+    const dag = await this.ipfsClient.object.get(cid, { localResolve: true });
+    return dag;
+  }
+
 }

@@ -1,9 +1,11 @@
 import { open as openFile } from "fs/promises";
 export class NFTLargeStorage {
   constructor(private ipfsClient: any) {}
+  
   start = async () => {
     await this.ipfsClient.config.profiles.apply("test");
   };
+
   add = async (filePath: string) => {
     const file = await openFile(filePath, "r");
     const stream = await file.createReadStream();
@@ -14,7 +16,7 @@ export class NFTLargeStorage {
       },
       {
         chunker: "size-100000",
-        progress: console.log,
+        // progress: console.log,
         wrapWithDirectory: true,
       }
     );
@@ -22,4 +24,5 @@ export class NFTLargeStorage {
     return result;
     // return Promise.resolve({hash: "QmXg9Pp2ytZ14xgmQjYEiHjVjMFXzCVVEcRTWJBmLgR39V"})
   };
+
 }

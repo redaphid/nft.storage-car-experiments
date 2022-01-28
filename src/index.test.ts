@@ -14,7 +14,6 @@ const randomString = (size: number) => {
 const testFile = "./test/data/alpine-standard-3.15.0-x86_64.iso";
 
 describe("NFTLargeFileStorage", () => {
-  let datadir: string;
   beforeAll(async () => {
     try {
       await stat(testFile);
@@ -29,12 +28,15 @@ describe("NFTLargeFileStorage", () => {
     }
     //
   });
+
   it("should exist", () => {
     expect(NFTLargeStorage).toBeDefined();
   });
   describe("Given an ipfs client", () => {
     let ipfsClient;
+    let datadir: string;
     let nftLargeStorage: NFTLargeStorage;
+
     beforeAll(async () => {
       datadir = `${tmpdir()}/ipfs-nft-large-storage-test/${randomString(
         10
@@ -42,28 +44,43 @@ describe("NFTLargeFileStorage", () => {
       await mkdir(datadir, { recursive: true });
     });
 
+    afterAll(async () => {
+      await rmdir(datadir, { recursive: true });
+    })
+
     beforeAll(async () => {
-      ipfsClient = await createIpfsClient({ path: datadir });
+      console.log({ datadir });
+      ipfsClient = await createIpfsClient({ repo: datadir, start: false });
       nftLargeStorage = new NFTLargeStorage(ipfsClient);
       await nftLargeStorage.start();
     });
-
-    it("should be able to store a file, and retrieve it's dag", async () => {
-      const file = await nftLargeStorage.add(testFile);
-      console.log({ file });
-      expect(file.cid.toString()).toEqual(
-        "QmeqG4GvhKPvXk52xhZBYnkAi9kPfQuxnx95YruLhmrayn"
-      );
-
-      const cid = file.cid;
-      const dag = await ipfsClient.object.get(cid, { localResolve: true })
-      console.log(JSON.stringify(dag, null, 2))
-      expect(dag).toBeDefined();
-    });
-    afterAll(async () => {
-      await ipfsClient.stop();
-      await timeout(1000);
-      await rmdir(datadir, { recursive: true });
+    describe("When a large file is added to ipfs", () => {
+      let result;
+      beforeAll(async () => {
+        result = await nftLargeStorage.add(testFile);
+      });
+      it("should return the correct CID", () => {
+        expect(result.cid.toString()).toEqual(
+          "QmeqG4GvhKPvXk52xhZBYnkAi9kPfQuxnx95YruLhmrayn"
+        );
+      });
     });
   });
+
+  //   it("should be able to store a file, and retrieve its dag", async () => {
+
+  //     console.log({ file });
+
+  //     const cid = file.cid;
+  //     const dag = await ipfsClient.object.get(cid, { localResolve: true })
+  //     console.log(JSON.stringify(dag, null, 2))
+  //     console.log(dag.Links)
+  //     expect(dag).toBeDefined();
+  //   });
+  //   afterAll(async () => {
+  //     await ipfsClient.stop();
+  //     await timeout(1000);
+  //     await rmdir(datadir, { recursive: true });
+  //   });
+  // });
 });

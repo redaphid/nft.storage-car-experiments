@@ -1,7 +1,7 @@
 import { create as createIpfsClient } from "ipfs";
 import { NFTLargeStorage } from "./index";
 import { tmpdir } from "os";
-import { mkdir, rmdir, stat } from "fs/promises";
+import { mkdir, rm, stat } from "fs/promises";
 import { randomBytes } from "crypto";
 
 import { promisify } from "util";
@@ -45,8 +45,8 @@ describe("NFTLargeFileStorage", () => {
     });
 
     afterAll(async () => {
-      await rmdir(datadir, { recursive: true });
-    })
+      await rm(datadir, { recursive: true });
+    });
 
     beforeAll(async () => {
       console.log({ datadir });
@@ -55,14 +55,21 @@ describe("NFTLargeFileStorage", () => {
       await nftLargeStorage.start();
     });
     describe("When a large file is added to ipfs", () => {
-      let result;
+      let file;
       beforeAll(async () => {
-        result = await nftLargeStorage.add(testFile);
+        file = await nftLargeStorage.add(testFile);
       });
       it("should return the correct CID", () => {
-        expect(result.cid.toString()).toEqual(
+        expect(file.cid.toString()).toEqual(
           "QmeqG4GvhKPvXk52xhZBYnkAi9kPfQuxnx95YruLhmrayn"
         );
+      });
+      it("should be able to retreive the dag", async () => {
+        const cid = file.cid;
+        const dag = await ipfsClient.object.get(cid, { localResolve: true });
+        console.log(JSON.stringify(dag, null, 2));
+        console.log(dag.Links);
+        expect(dag).toBeDefined();
       });
     });
   });
